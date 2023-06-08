@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Unit Converter</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="navbar">
+        <h1>Unit Converter</h1>
+        <div class="navbar-dropdown">
+            <button class="dropbtn">Other Converters</button>
+            <div class="navbar-dropdown-content">
+                <a href="index.html">Length</a>
+                <a href="temperature.html">Temperature</a>
+                <a href="volume.html">Volume</a>
+                <a href="weight.html">Weight</a>
+                <a href="time.html">Time</a>
+            </div>
+        </div>
+        
+    </div>
+
+    <div class="container">
+        <h1>Area Converter</h1>
+        <form id="converterForm">
+            <label for="value">Value:</label>
+            <input type="number" id="value" required>
+
+            <label for="fromUnit">From Unit:</label>
+            <select id="fromUnit" required>
+                <option value="">Select Unit</option>
+                <option value="sqm">square meter</option>
+                <option value="sqkm">square kilometer</option>
+                <option value="sqcm">square centimeter</option>
+                <option value="sqmm">square millimeter</option>
+                <option value="ha"> hectare</option>
+                <option value="sqmi">square mile</option>
+                <option value="sqyd"> square yard</option>
+                <option value="sqft">square foot</option>
+                <option value="sqin">square inch</option>
+                <option value="acre">acre</option>
+            </select>
+
+            <label for="toUnit">To Unit:</label>
+            <select id="toUnit" required>
+                <option value="">Select Unit</option>
+                <option value="sqm">square meter</option>
+                <option value="sqkm">square kilometer</option>
+                <option value="sqcm">square centimeter</option>
+                <option value="sqmm">square millimeter</option>
+                <option value="ha"> hectare</option>
+                <option value="sqmi">square mile</option>
+                <option value="sqyd"> square yard</option>
+                <option value="sqft">square foot</option>
+                <option value="sqin">square inch</option>
+                <option value="acre">acre</option>
+            </select>
+
+            <button type="submit">Convert</button>
+        </form>
+
+        <div id="result" class="result">Result</div>
+    </div>
+
+    <script>
+        document.getElementById('converterForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            var value = parseFloat(document.getElementById('value').value);
+            var fromUnit = document.getElementById('fromUnit').value;
+            var toUnit = document.getElementById('toUnit').value;
+    
+            var result = convertArea(value, fromUnit, toUnit);
+    
+            document.getElementById('result').innerHTML = value + ' ' + fromUnit + ' = ' + result + ' ' + toUnit;
+        });
+    
+
+        function convertArea(value, fromUnit, toUnit) {
+            var conversionFactors = {
+                "sqm": 1,
+                "sqkm": 1e+6,
+                "sqcm": 1e-4,
+                "sqmm": 1e-6,
+                "ha": 1e+4,
+                "sqmi": 2.59e+6,
+                "sqyd": 0.836,
+                "sqft": 0.093,
+                "sqin": 0.000645,
+                "acre": 4046.86
+            };
+
+            var result = value * conversionFactors[fromUnit] / conversionFactors[toUnit];
+            if (Number.isInteger(result)) {
+            return result.toString();  // Return as string without decimal places
+            } else {
+                return result.toFixed(6);  // Return with up to 6 decimal places
+            }
+        }
+
+    </script>
+    
+</body>
+</html>

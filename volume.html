@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Unit Converter</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="navbar">
+        <h1>Unit Converter</h1>
+        <div class="navbar-dropdown">
+            <button class="dropbtn">Other Converters</button>
+            <div class="navbar-dropdown-content">
+                <a href="index.html">Length</a>
+                <a href="area.html">Area</a>
+                <a href="temperature.html">Temperature</a>
+                <a href="weight.html">Weight</a>
+                <a href="time.html">Time</a>
+            </div>
+        </div>
+        
+    </div>
+
+    <div class="container">
+        <h1>Volume Converter</h1>
+        <form id="converterForm">
+            <label for="value">Value:</label>
+            <input type="number" id="value" required>
+
+            <label for="fromUnit">From Unit:</label>
+            <select id="fromUnit" required>
+                <option value="">Select Unit</option>
+                <option value="cbm">cubic meter</option>
+                <option value="cbkm">cubic kilometer</option>
+                <option value="cbcm">cubic centimeter</option>
+                <option value="cbmm">cubic millimeter</option>
+                <option value="l"> liter</option>
+                <option value="ml">millilieter</option>
+                <option value="usgal">US gallon</option>
+                <option value="usqt">US Quart</option>
+                <option value="uspint">US pint</option>
+                <option value="uscup">Us cup</option>
+                <option value="cbmi">cubic mile</option>
+                <option value="cbyd">cubic yard</option>
+                <option value="cbft">cubic foot</option>
+                <option value="cbin">cubic inch</option>
+            </select>
+
+            <label for="toUnit">To Unit:</label>
+            <select id="toUnit" required>
+                <option value="">Select Unit</option>
+                <option value="cbm">cubic meter</option>
+                <option value="cbkm">cubic kilometer</option>
+                <option value="cbcm">cubic centimeter</option>
+                <option value="cbmm">cubic millimeter</option>
+                <option value="l"> liter</option>
+                <option value="ml">millilieter</option>
+                <option value="usgal">US gallon</option>
+                <option value="usqt">US Quart</option>
+                <option value="uspint">US pint</option>
+                <option value="uscup">Us cup</option>
+                <option value="cbmi">cubic mile</option>
+                <option value="cbyd">cubic yard</option>
+                <option value="cbft">cubic foot</option>
+                <option value="cbin">cubic inch</option>
+            </select>
+
+            <button type="submit">Convert</button>
+        </form>
+
+        <div id="result" class="result">Result</div>
+    </div>
+
+    <script>
+        document.getElementById('converterForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            var value = parseFloat(document.getElementById('value').value);
+            var fromUnit = document.getElementById('fromUnit').value;
+            var toUnit = document.getElementById('toUnit').value;
+    
+            var result = convertVolume(value, fromUnit, toUnit);
+    
+            document.getElementById('result').innerHTML = value + ' ' + fromUnit + ' = ' + result + ' ' + toUnit;
+        });
+    
+        function convertVolume(value, fromUnit, toUnit) {
+        var conversionFactors = {
+            "cbm": 1,
+            "cbkm": 1e+9,
+            "cbcm": 1e-6,
+            "cbmm": 1e-9,
+            "l": 0.001,
+            "ml": 1e-6,
+            "usgal": 0.00378541,
+            "usqt": 0.000946353,
+            "uspint": 0.000473176,
+            "uscup": 0.000236588,
+            "cbmi": 4168181825.4,
+            "cbyd": 0.764555,
+            "cbft": 0.0283168,
+            "cbin": 0.0000163871
+        };
+
+        var result = value * (conversionFactors[fromUnit] / conversionFactors[toUnit]);
+        if (Number.isInteger(result)) {
+            return result.toString();  // Return as string without decimal places
+        } else {
+            return result.toFixed(10);  // Return with up to 6 decimal places
+        }
+    }
+    </script>
+    
+</body>
+</html>

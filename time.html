@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Unit Converter</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="navbar">
+        <h1>Unit Converter</h1>
+        <div class="navbar-dropdown">
+            <button class="dropbtn">Other Converters</button>
+            <div class="navbar-dropdown-content">
+                <a href="index.html">Length</a>
+                <a href="area.html">Area</a>
+                <a href="temperature.html">Temperature</a>
+                <a href="volume.html">Volume</a>
+                <a href="weight.html">Weight</a>
+            </div>
+        </div>
+        
+    </div>
+
+    <div class="container">
+        <h1>Time Converter</h1>
+        <form id="converterForm">
+            <label for="value">Value:</label>
+            <input type="number" id="value" required>
+
+            <label for="fromUnit">From Unit:</label>
+            <select id="fromUnit" required>
+                <option value="">Select Unit</option>
+                <option value="s">second</option>
+                <option value="ms">millisecond</option>
+                <option value="μs">microsecond</option>
+                <option value="ns">nanosecond</option>
+                <option value="ps">picosecond</option>
+                <option value="min">minute</option>
+                <option value="hr">hour</option>
+                <option value="day">days</option>
+                <option value="wk">weeks</option>
+                <option value="month">month</option>
+                <option value="year">year</option>
+            </select>
+
+            <label for="toUnit">To Unit:</label>
+            <select id="toUnit" required>
+                <option value="">Select Unit</option>
+                <option value="s">second</option>
+                <option value="ms">millisecond</option>
+                <option value="μs">microsecond</option>
+                <option value="ns">nanosecond</option>
+                <option value="ps">picosecond</option>
+                <option value="min">minute</option>
+                <option value="hr">hour</option>
+                <option value="day">days</option>
+                <option value="wk">weeks</option>
+                <option value="month">month</option>
+                <option value="year">year</option>
+            </select>
+
+            <button type="submit">Convert</button>
+        </form>
+
+        <div id="result" class="result">Result</div>
+    </div>
+
+    <script>
+        document.getElementById('converterForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            var value = parseFloat(document.getElementById('value').value);
+            var fromUnit = document.getElementById('fromUnit').value;
+            var toUnit = document.getElementById('toUnit').value;
+    
+            var result = convertTime(value, fromUnit, toUnit);
+    
+            document.getElementById('result').innerHTML = value + ' ' + fromUnit + ' = ' + result + ' ' + toUnit;
+        });
+    
+        function convertTime(value, fromUnit, toUnit) {
+        var conversionFactors = {
+            "s": 1,
+            "ms": 0.001,
+            "μs": 0.000001,
+            "ns": 0.000000001,
+            "ps": 0.000000000001,
+            "min": 60,
+            "hr": 3600,
+            "day": 86400,
+            "wk": 604800,
+            "month": 2629800,
+            "year": 31557600
+        };
+
+        var result = (value * conversionFactors[fromUnit]) / conversionFactors[toUnit];
+        if (Number.isInteger(result)) {
+            return result.toString();  // Return as string without decimal places
+        } else {
+            return result.toFixed(10);  // Return with up to 6 decimal places
+        }
+    }
+    </script>
+    
+</body>
+</html>

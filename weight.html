@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Unit Converter</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="navbar">
+        <h1>Unit Converter</h1>
+        <div class="navbar-dropdown">
+            <button class="dropbtn">Other Converters</button>
+            <div class="navbar-dropdown-content">
+                <a href="index.html">Length</a>
+                <a href="area.html">Area</a>
+                <a href="temperature.html">Temperature</a>
+                <a href="volume.html">Volume</a>
+                <a href="time.html">Time</a>
+            </div>
+        </div>
+        
+    </div>
+
+    <div class="container">
+        <h1>Weight Converter</h1>
+        <form id="converterForm">
+            <label for="value">Value:</label>
+            <input type="number" id="value" required>
+
+            <label for="fromUnit">From Unit:</label>
+            <select id="fromUnit" required>
+                <option value="">Select Unit</option>
+                <option value="kg">Kilogram</option>
+                <option value="g">gram</option>
+                <option value="mg">milligram</option>
+                <option value="tonne">metric ton</option>
+                <option value="lton"> long ton</option>
+                <option value="ston">short ton</option>
+                <option value="lb">pound</option>
+                <option value="oz">ounce</option>
+                <option value="ct">carat</option>
+                <option value="amu">atomic mass unit</option>
+            </select>
+
+            <label for="toUnit">To Unit:</label>
+            <select id="toUnit" required>
+                <option value="">Select Unit</option>
+                <option value="kg">Kilogram</option>
+                <option value="g">gram</option>
+                <option value="mg">milligram</option>
+                <option value="tonne">metric ton</option>
+                <option value="lton"> long ton</option>
+                <option value="ston">short ton</option>
+                <option value="lb">pound</option>
+                <option value="oz">ounce</option>
+                <option value="ct">carat</option>
+                <option value="amu">atomic mass unit</option>
+            </select>
+
+            <button type="submit">Convert</button>
+        </form>
+
+        <div id="result" class="result">Result</div>
+    </div>
+
+    <script>
+        document.getElementById('converterForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            var value = parseFloat(document.getElementById('value').value);
+            var fromUnit = document.getElementById('fromUnit').value;
+            var toUnit = document.getElementById('toUnit').value;
+    
+            var result = convertWeight(value, fromUnit, toUnit);
+    
+            document.getElementById('result').innerHTML = value + ' ' + fromUnit + ' = ' + result + ' ' + toUnit;
+        });
+    
+        function convertWeight(value, fromUnit, toUnit) {
+        var conversionFactors = {
+            "kg": 1,
+            "g": 0.001,
+            "mg": 0.000001,
+            "tonne": 1000,
+            "lton": 1016.05,
+            "ston": 907.185,
+            "lb": 0.453592,
+            "oz": 0.0283495,
+            "ct": 0.0002,
+            "amu": 1.66053906660e-27
+        };
+
+        var result = (value * conversionFactors[fromUnit]) / conversionFactors[toUnit];
+        if (Number.isInteger(result)) {
+            return result.toString();  // Return as string without decimal places
+        } else {
+            return result.toFixed(10);  // Return with up to 6 decimal places
+        }
+    }
+    </script>
+    
+</body>
+</html>
