@@ -1,17 +1,39 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap');
+
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', monospace;
+    }
+
 body {
-    font-family: 'Inconsolata', monospace;
-    background-color: #000000;
+    justify-content: center;
+    align-items: center;
+    background-color: #212121;
 }
 
 .navbar {
-    background-color: #333;
-    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.navbar-content {
+    width: 80%;
+    align-items: center;
     border-radius: 30px;
+    background: #212121;
+    box-shadow: 15px 15px 30px rgb(25, 25, 25),
+                -15px -15px 30px rgb(60, 60, 60);   
+    overflow: hidden;
+    margin-bottom: 20px;
+    margin-top: 20px;
 }
 
 .navbar a {
-    float: left;
-    color: #02f1f5;
+    color: rgb(209, 207, 207);
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
@@ -24,16 +46,18 @@ body {
 }
 
 .navbar-dropdown {
-    color: #02f1f5;
+    color: rgb(209, 207, 207);
     float: right;
     overflow: hidden;
 }
 
 .navbar-dropdown .dropbtn {
+    text-align: center;
+    font-family: 'Poppins', monospace;
     font-size: 17px;
     border: none;
     outline: none;
-    color: #02f1f5;
+    color: rgb(209, 207, 207);
     padding: 20px 100px;
     background-color: inherit;
     margin: 0;
@@ -50,7 +74,7 @@ body {
 
 .navbar-dropdown-content a {
     float: none;
-    color: #02f1f5;
+    color: rgb(209, 207, 207);
     background-color: #333;
     padding: 12px 16px;
     text-decoration: none;
@@ -68,60 +92,68 @@ body {
 
 .navbar h1 {
     float: left;
-    color: #02f1f5;
+    color: rgb(209, 207, 207);
     padding: 14px 100px;
     margin: 0;
 }
 
 
 .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 40px;
+}
+
+.content {
     width: 400px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #000000;
-    border-radius: 5px;
+    height: 550px;
+    border-radius: 30px;
+    background: #212121;
+    box-shadow: 15px 15px 30px rgb(25, 25, 25),
+                -15px -15px 30px rgb(60, 60, 60);
 }
 
 h1 {
+    margin-top: 20px;
     text-align: center;
-    color: #02f1f5;
+    color: rgb(209, 207, 207);
 }
 
 label {
-    color: #02f1f5;
-    display: block;
+    color: rgb(209, 207, 207);
+    display: flex;
+    justify-content: center;
     margin-top: 25px;
     margin-bottom: 5px;
     font-weight: bold;
 }
 
 input[type="number"]{
-    font-family: 'Inconsolata', monospace;
-    color: #02f1f5;
-    width: 94.5%;
-    background-color: #1a1919;
+    color: rgb(209, 207, 207);
+    width: 80%;
+    background: transparent;
     padding: 10px;
-    border: 1px solid #02f1f5;
+    border: 1px solid rgb(60, 60, 60);
     border-radius: 20px; 
 }
 
 select {
-    font-family: 'Inconsolata', monospace;
-    color: #02f1f5;
-    width: 100%;
-    background-color: #1a1919;
+    color: rgb(109, 108, 108);
+    width: 80%;
+    background: transparent;
     padding: 10px;
-    border: 1px solid #02f1f5;
+    border: 1px solid rgb(60, 60, 60);
     border-radius: 20px;
 }
 
 button {
-    font-family: 'Inconsolata', monospace;
-    width: 100%;
+    width: 80%;
     margin-top: 15px;
     padding: 10px;
-    background-color: #02f1f5;
-    color: #000000;
+    background-color: rgb(109, 108, 108);
+    color: rgb(209, 207, 207);
     border: none;
     border-radius: 20px;
     cursor: pointer;
@@ -133,12 +165,18 @@ button:hover {
 }
 
 .result {
-    color: #02f1f5;
+    width: 80%;
+    color: rgb(209, 207, 207);
     margin-top: 20px;
     padding: 10px;
-    background-color: #1a1919;
-    border: 1px solid #02f1f5;
+    background: transparent;
+    border: 1px solid rgb(60, 60, 60);
     border-radius: 20px;
+}
+
+#selector {
+    display: flex;
+    justify-content: center;
 }
 
 @media only screen and (max-width: 600px) {
