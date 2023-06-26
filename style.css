@@ -181,7 +181,7 @@ button:hover {
 
 @media only screen and (max-width: 600px) {
   .navbar-content {
-    flex-direction: column;
+    display: flex;
     align-items: center;
     padding: 10px;
   }
@@ -197,8 +197,12 @@ button:hover {
   .content {
     width: 80%;
   }
+
+   h1 {
+      font-size: 20px;
+   }
    
-   .hidden {
+   #selector {
       width: 90%;
    }
   
