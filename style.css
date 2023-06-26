@@ -180,30 +180,49 @@ button:hover {
 }
 
 @media only screen and (max-width: 600px) {
-    /* Adjustments for mobile screens */
-    /* Example adjustments: */
-    
-    /* Navbar */
-    nav ul {
-      flex-direction: column;
-    }
-    
-    nav ul li {
-      margin-bottom: 10px;
-    }
-    
-    /* Conversion forms */
-    form {
-      max-width: 300px;
-      margin: 0 auto;
-    }
-    
-    /* Footer */
-    footer {
-      font-size: 12px;
-      padding: 10px;
-    }
+  .navbar-content {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px;
   }
+  
+  .navbar h1 {
+    padding: 10px;
+  }
+  
+  .navbar-dropdown {
+    float: none;
+    display: inline-block;
+  }
+  
+  .navbar-dropdown-content {
+    position: static;
+    display: none;
+    background-color: transparent;
+    box-shadow: none;
+  }
+  
+  .navbar-dropdown:hover .navbar-dropdown-content {
+    display: block;
+  }
+  
+  .container {
+    margin-top: 20px;
+  }
+  
+  .content {
+    width: 90%;
+  }
+  
+  button {
+    width: 100%;
+  }
+  
+  #result {
+    width: 90%;
+  }
+}
+
   
   
   
