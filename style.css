@@ -182,7 +182,6 @@ button:hover {
 @media only screen and (max-width: 600px) {
   .navbar-content {
     display: flex;
-    justify-content: center;
     align-items: center;
     padding: 10px;
   }
@@ -201,6 +200,10 @@ button:hover {
 
    h1 {
       font-size: 15px;
+   }
+
+   input[type="number"] {
+      width: 90%;
    }
    
    select {
